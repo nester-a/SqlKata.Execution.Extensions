@@ -146,5 +146,94 @@ namespace SqlKata.Execution.Extensions
         {
             await query.ChunkAsync(chunkSize, func, args.Transaction, args.QueryTimeout, args.CancellationToken);
         }
+
+        public static int Update(this Query query, object data, ExecutionArguments args)
+        {
+            return query.Update(data, args.Transaction, args.QueryTimeout);
+        }
+
+        public static int Update(this Query query, IEnumerable<KeyValuePair<string, object>> values, ExecutionArguments args)
+        {
+            return query.Update(values, args.Transaction, args.QueryTimeout);
+        }
+        public static async Task<int> UpdateAsync(this Query query, object data, AsyncExecutionArguments args)
+        {
+            return await query.UpdateAsync(data, args.Transaction, args.QueryTimeout, args.CancellationToken);
+        }
+
+        public static async Task<int> UpdateAsync(this Query query, IEnumerable<KeyValuePair<string, object>> values, AsyncExecutionArguments args)
+        {
+            return await query.UpdateAsync(values, args.Transaction, args.QueryTimeout, args.CancellationToken);
+        }
+
+        public static int Insert(this Query query, object data, ExecutionArguments args)
+        {
+            return query.Insert(data, args.Transaction, args.QueryTimeout);
+        }
+
+        public static int Insert(this Query query, IEnumerable<KeyValuePair<string, object>> values, ExecutionArguments args)
+        {
+            return query.Insert(values, args.Transaction, args.QueryTimeout);
+        }
+
+        public static int Insert(this Query query, IEnumerable<string> colums, Query fromQuery, ExecutionArguments args)
+        {
+            return query.Insert(colums, fromQuery, args.Transaction, args.QueryTimeout);
+        }
+
+        public static int Insert(this Query query, IEnumerable<string> colums, IEnumerable<IEnumerable<object>> valueCollection, ExecutionArguments args)
+        {
+            return query.Insert(colums, valueCollection, args.Transaction, args.QueryTimeout);
+        }
+
+        public static async Task<int> InsertAsync(this Query query, object data, AsyncExecutionArguments args)
+        {
+            return await query.InsertAsync(data, args.Transaction, args.QueryTimeout, args.CancellationToken);
+        }
+
+        public static async Task<int> InsertAsync(this Query query, IEnumerable<KeyValuePair<string, object>> values, AsyncExecutionArguments args)
+        {
+            return await query.InsertAsync(values, args.Transaction, args.QueryTimeout, args.CancellationToken);
+        }
+
+        public static async Task<int> InsertAsync(this Query query, IEnumerable<string> colums, Query fromQuery, AsyncExecutionArguments args)
+        {
+            return await query.InsertAsync(colums, fromQuery, args.Transaction, args.QueryTimeout, args.CancellationToken);
+        }
+
+        public static async Task<int> InsertAsync(this Query query, IEnumerable<string> colums, IEnumerable<IEnumerable<object>> valueCollection, AsyncExecutionArguments args)
+        {
+            return await query.InsertAsync(colums, valueCollection, args.Transaction, args.QueryTimeout, args.CancellationToken);
+        }
+
+        public static T InsertGetId<T>(this Query query, object data, ExecutionArguments args)
+        {
+            return query.InsertGetId<T>(data, args.Transaction, args.QueryTimeout);
+        }
+
+        public static T InsertGetId<T>(this Query query, IEnumerable<KeyValuePair<string, object>> values, ExecutionArguments args)
+        {
+            return query.InsertGetId<T>(values, args.Transaction, args.QueryTimeout);
+        }
+
+        public static async Task<T> InsertGetIdAsync<T>(this Query query, object data, AsyncExecutionArguments args)
+        {
+            return await query.InsertGetIdAsync<T>(data, args.Transaction, args.QueryTimeout, args.CancellationToken);
+        }
+
+        public static async Task<T> InsertGetIdAsync<T>(this Query query, IEnumerable<KeyValuePair<string, object>> values, AsyncExecutionArguments args)
+        {
+            return await query.InsertGetIdAsync<T>(values, args.Transaction, args.QueryTimeout, args.CancellationToken);
+        }
+
+        public static int Delete(this Query query, ExecutionArguments args)
+        {
+            return query.Delete(args.Transaction, args.QueryTimeout);
+        }
+
+        public static async Task<int> DeleteAsync(this Query query, AsyncExecutionArguments args)
+        {
+            return await query.DeleteAsync(args.Transaction, args.QueryTimeout, args.CancellationToken);
+        }
     }
 }
