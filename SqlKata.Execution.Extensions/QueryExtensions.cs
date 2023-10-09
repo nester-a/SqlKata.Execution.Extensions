@@ -103,7 +103,6 @@ namespace SqlKata.Execution.Extensions
 
         public static async Task<PaginationResult<T>> PaginateAsync<T>(this Query query, PaginationArguments paginationArgs, AsyncExecutionArguments executionsArgs)
         {
-            
             return await query.PaginateAsync<T>(paginationArgs.Page, paginationArgs.PerPage, executionsArgs);
         }
 
