@@ -234,5 +234,15 @@ namespace SqlKata.Execution.Extensions
         {
             return await query.DeleteAsync(args.Transaction, args.QueryTimeout, args.CancellationToken);
         }
+
+        public static T Aggregate<T>(this Query query, string aggregateOperation, string[] columns, ExecutionArguments args)
+        {
+            return query.Aggregate<T>(aggregateOperation, columns, args.Transaction, args.QueryTimeout);
+        }
+
+        public static async Task<T> AggregateAsync<T>(this Query query, string aggregateOperation, string[] columns, AsyncExecutionArguments args)
+        {
+            return await query.AggregateAsync<T>(aggregateOperation, columns, args.Transaction, args.QueryTimeout, args.CancellationToken);
+        }
     }
 }
